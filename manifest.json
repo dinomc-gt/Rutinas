@@ -2,7 +2,7 @@
   "name": "Mis Rutinas",
   "short_name": "Rutinas",
   "description": "Tu app personal de hábitos y rutinas diarias",
-  "start_url": "/",
+  "start_url": "/Rutinas/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1D9E75",
