@@ -450,6 +450,19 @@
 
 <script>
 var TODAY = new Date().toISOString().split('T')[0];
+
+// Auto-detect day change every minute
+setInterval(function(){
+  var newDay = new Date().toISOString().split('T')[0];
+  if(newDay !== TODAY){
+    TODAY = newDay;
+    checks = loadC(TODAY);
+    var now2 = new Date();
+    document.getElementById('date-text').textContent = DIAS[now2.getDay()]+', '+now2.getDate()+' de '+MES[now2.getMonth()]+' '+now2.getFullYear();
+    renderHabits();
+    showToast('¡Nuevo día! Rutinas reiniciadas');
+  }
+}, 60000);
 var MONTHS = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 var MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 var DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
