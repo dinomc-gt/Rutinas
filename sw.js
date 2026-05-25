@@ -1,8 +1,8 @@
 const CACHE = 'rutinas-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  '/Rutinas/',
+  '/Rutinas/index.html',
+  '/Rutinas/manifest.json',
   'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css',
   'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/fonts/tabler-icons.woff2'
 ];
@@ -47,7 +47,7 @@ self.addEventListener('fetch', function(e) {
         }
         return response;
       }).catch(function() {
-        return caches.match('/index.html');
+        return caches.match('/Rutinas/index.html');
       });
     })
   );
@@ -59,12 +59,12 @@ self.addEventListener('push', function(e) {
   e.waitUntil(
     self.registration.showNotification(data.title || 'Mis Rutinas', {
       body: data.body || '¡Es hora de tu rutina!',
-      icon: '/icons/icon-192.png',
-      badge: '/icons/icon-192.png',
+      icon: '/Rutinas/icons/icon-192.png',
+      badge: '/Rutinas/icons/icon-192.png',
       vibrate: [200, 100, 200],
       tag: data.tag || 'rutina',
       renotify: true,
-      data: { url: '/' }
+      data: { url: '/Rutinas/' }
     })
   );
 });
@@ -75,7 +75,7 @@ self.addEventListener('notificationclick', function(e) {
   e.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(list) {
       if (list.length > 0) return list[0].focus();
-      return clients.openWindow('/');
+      return clients.openWindow('/Rutinas/');
     })
   );
 });
@@ -86,7 +86,7 @@ self.addEventListener('periodicsync', function(e) {
     e.waitUntil(
       self.registration.showNotification('Mis Rutinas', {
         body: '¡No olvides completar tus hábitos de hoy!',
-        icon: '/icons/icon-192.png',
+        icon: '/Rutinas/icons/icon-192.png',
         tag: 'daily'
       })
     );
